@@ -1,0 +1,43 @@
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  /* 100% of the visible area that the user see's */
+  width: 100vw;
+  /* 100% of the visible area */
+  height: 100vh;
+  /* These allows us to center the animation */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #001932;
+}
+
+/* This is creating a virtual element inside CSS */
+.loader::after {
+  /* This allows the animation to be visible */
+  content: "";
+  width: 50px;
+  height: 50px;
+  background: #0099FF;
+
+  /* We're gonna tell the element to say animation & tell it to use loader at 0.5s or something else */
+  animation: loader 0.5s infinite;
+
+  /* This is gonna take the end of your animation & then transition back to the original shape */
+  animation-direction: alternate;
+}
+
+/* We're specifying what's happening in the animation */
+@keyframes loader {
+  from {
+    transform: translateY(-50px) scale(0.5);
+    /* This is gonna give us a clrcle */
+    border-radius: 50%;
+  }
+  to {
+    transform: translateY(50px) scale(1);
+    /* This is gonna go back to it's original shape */
+    border-radius: 0%;
+  }
+}
